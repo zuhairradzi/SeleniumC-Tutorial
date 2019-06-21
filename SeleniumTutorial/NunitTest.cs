@@ -173,9 +173,38 @@ namespace SeleniumTutorial
         }
 
         [Test, Order(6)]
-        public void testOpaque()
+        public void fidElementForCheckBoxAndRadioButtons()
         {
-            driver.Url
+            //click radio button by id
+            driver.FindElement(By.Id("")).Click();
+
+            //if radio button selected by default, and you need to select the other one
+
+            //#1 store all buttons in a a list
+            IList<IWebElement> radioElem = driver.FindElements(By.Id(""));
+
+            //#2 default all button unchecked
+            bool rButton = false;
+
+            //#3 check if first button selected
+            rButton = radioElem.ElementAt(0).Selected;
+
+            if (rButton == true)
+            {
+                //click second button if first button selected
+                radioElem.ElementAt(1).Click();
+            }
+
+
+            //click multiple checkbox with samevalue
+
+            //#1 store all checkbox in list
+            IList<IWebElement> checkBoxes = driver.FindElements(By.Name("name"));
+
+            //#2 get total count of checkboxes
+            int count = checkBoxes.Count();
+
+            //#3 
         }
 
         [TearDown]
